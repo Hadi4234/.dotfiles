@@ -1,7 +1,12 @@
 ## This .dotfiles are manage with gnu-stow
+- Stow add
 ```sh
   stow --adopt -vt ~ *  #all
   stow --adopt -vt ~ vim #for only vim
+```
+- Stow remove
+```sh
+   stow -vDt ~ vim
 ```
 ### install apps
 - Backup the packages

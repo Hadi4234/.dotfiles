@@ -1,4 +1,4 @@
-" Map escape to jj by hadi
+" Map escape to jj 
 imap jj <Esc>
 
 " Syntax highlighting

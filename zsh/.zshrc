@@ -6,7 +6,6 @@
 #export ZSH="/home/$USER/.oh-my-zsh"
 #installation via paru -S oh-my-zsh-git
 export ZSH=/usr/share/oh-my-zsh/
-
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -131,6 +130,41 @@ if [ -d "$HOME/.local/bin" ] ;
 fi
 #stow-comments
 #alias stowadd ='stow --adopt -vt ~ '
+
+# stow (th stands for target=home)
+stowlink(){
+  stow --adopt -vt ~ $1
+}
+stowth() {
+  stow -vSt ~ $1
+}
+
+unstowth() {
+  stow -vDt ~ $1
+}
+
+diy-install() {
+  wget -q https://script.install.devinsideyou.com/$1
+  sudo chmod +x $1 && ./$1 $2 $3
+}
+
+github-clone() {
+  dir="${3:-$2}"
+  git clone git@github.com:$1/$2.git $dir
+  cd $dir
+}
+
+github-clone-https() {
+  dir="${3:-$2}"
+  git clone https://github.com/$1/$2.git $dir
+  cd $dir
+}
+gitc(){
+  git commit -m "$1"
+}
+gitadd(){
+  git add $1
+}
 #list
 alias ls='ls --color=auto'
 alias la='ls -a'
