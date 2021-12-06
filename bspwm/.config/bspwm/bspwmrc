@@ -15,8 +15,7 @@ $HOME/.config/polybar/launch.sh
 
 feh  --bg-fill ~/Downloads/wallpaper.jpg
 
-bspc monitor -d I II III IV V VI
-
+bspc monitor -d I II III IV VI VII VIII IX 
 bspc config border_width         2
 bspc config window_gap           15
 

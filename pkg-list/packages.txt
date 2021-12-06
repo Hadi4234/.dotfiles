@@ -1,3 +1,4 @@
+alacritty
 amd-ucode
 arc-gtk-theme
 archlinux-wallpaper
@@ -9,6 +10,7 @@ bison
 bspwm
 code
 dmenu
+dunst
 efibootmgr
 exo
 fakeroot
@@ -32,6 +34,9 @@ gst-plugin-pipewire
 gvfs
 gzip
 htop
+i3-gaps
+i3blocks
+i3status
 iwd
 kitty
 lazygit
@@ -76,6 +81,7 @@ pkgconf
 polybar
 ranger
 ristretto
+rofi-screenshot-git
 sed
 smartmontools
 stow
@@ -93,6 +99,7 @@ tumbler
 unzip
 vim
 virtualbox
+vmware-workstation
 vulkan-radeon
 wget
 which
@@ -144,6 +151,7 @@ xfconf
 xfdesktop
 xfwm4
 xfwm4-themes
+xmonad-git
 xorg-server
 xorg-xinit
 yay-git
