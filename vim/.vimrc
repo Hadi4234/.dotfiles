@@ -30,6 +30,23 @@ set mouse=a
 " Column set to column 100
 set colorcolumn=80
 
+ 
+"folding
+  setlocal foldmethod=indent
+  set nofoldenable
+  set foldlevel=99
+  set fillchars=fold:\ "The backslash escapes a space
+  set foldtext=CustomFoldText()
+  function! CustomFoldText()
+    let indentation = indent(v:foldstart - 1)
+    let foldSize = 1 + v:foldend - v:foldstart
+    let foldSizeStr = " " . foldSize . " lines "
+    let foldLevelStr = repeat("+--", v:foldlevel)
+    let expansionString = repeat(" ", indentation)
+    return expansionString . foldLevelStr . foldSizeStr
+  endfunction
+
+
 " Column color set to grey
 "highlight ColorColumn ctermbg=1
 
@@ -56,52 +73,52 @@ endif
 " Required:
 call plug#begin(expand('~/.vim/plugged'))
 
-" Make your Vim/Neovim as smart as VSCode
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  " Make your Vim/Neovim as smart as VSCode
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" Formatter
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+  " Formatter
+  Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
-" Comment and uncomment lines
-Plug 'preservim/nerdcommenter'
+  " Comment and uncomment lines
+  Plug 'preservim/nerdcommenter'
 
-" A light and configurable statusline/tabline plugin for Vim
-Plug 'itchyny/lightline.vim'
+  " A light and configurable statusline/tabline plugin for Vim
+  Plug 'itchyny/lightline.vim'
 
-" Directory tree
-Plug 'scrooloose/nerdtree'
+  " Directory tree
+  Plug 'scrooloose/nerdtree'
 
-" Visualize undo history tree (in vim undo is not linear)
-Plug 'mbbill/undotree'
+  " Visualize undo history tree (in vim undo is not linear)
+  Plug 'mbbill/undotree'
 
-" Syntax highlighting for languages
-Plug 'sheerun/vim-polyglot'
+  " Syntax highlighting for languages
+  Plug 'sheerun/vim-polyglot'
 
-" Fzf is a general-purpose command-line fuzzy finder
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+  " Fzf is a general-purpose command-line fuzzy finder
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
 
-" This plugin adds Go language support for Vim, with many features
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+  " This plugin adds Go language support for Vim, with many features
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
-" Python code formatter
-Plug 'ambv/black'
+  " Python code formatter
+  Plug 'ambv/black'
 
-" Gruvbox color theme
-Plug 'morhetz/gruvbox'
+  " Gruvbox color theme
+  Plug 'morhetz/gruvbox'
 
-" Vim-monokai-tasty color theme
-Plug 'patstockwell/vim-monokai-tasty'
+  " Vim-monokai-tasty color theme
+  Plug 'patstockwell/vim-monokai-tasty'
 
-Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
-" add this line to your .vimrc file
-Plug 'mattn/emmet-vim'
-Plug 'dbeniamine/cheat.sh-vim'
+  Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+  " add this line to your .vimrc file
+  Plug 'mattn/emmet-vim'
+  Plug 'dbeniamine/cheat.sh-vim'
 
-" Snippets are separated from the engine. Add this if you want them:
-Plug 'honza/vim-snippets'
-Plug 'pianocomposer321/project-templates.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'aperezdc/vim-template'
+  " Snippets are separated from the engine. Add this if you want them:
+  Plug 'honza/vim-snippets'
+  Plug 'pianocomposer321/project-templates.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'aperezdc/vim-template'
 call plug#end()
 
 " Set mapleader to space
@@ -122,6 +139,8 @@ nmap <leader><leader>u :UndotreeToggle<cr>
 nmap <leader><leader>f :Files<cr>
 nmap <leader><leader><leader>g :GoMetaLinter<cr>
 nnoremap <C-p> :GFiles<CR>
+nnoremap <leader>m zM
+nnoremap <leader>r zR
 nnoremap <leader><leader>c :call NERDComment(0,"toggle")<CR>
 vnoremap <leader><leader>c :call NERDComment(0,"toggle")<CR>
 nnoremap <leader><Tab> :bnext<CR>
