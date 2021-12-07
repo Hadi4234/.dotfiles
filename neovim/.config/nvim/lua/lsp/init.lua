@@ -1,3 +1,5 @@
 require('lsp/cmp')
+require('lsp/lsp-kind')
+require('lsp/lsp-config')
 require('lsp/diagnostic_signs')
 require('lsp/lsp-installer')

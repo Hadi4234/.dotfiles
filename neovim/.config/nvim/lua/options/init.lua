@@ -1,7 +1,12 @@
 vim.cmd('filetype plugin indent on')
 vim.o.shortmess = vim.o.shortmess .. 'c'
 vim.o.hidden = true
---vim.opt.syntax = on
+
+-- Mapping waiting time
+-- vim.o.timeout = false
+-- vim.o.ttimeout = true
+-- vim.o.ttimeoutlen = 100
+
 vim.o.whichwrap = 'b,s,<,>,[,],h,l'
 vim.o.pumheight = 10
 vim.o.fileencoding = 'utf-8'

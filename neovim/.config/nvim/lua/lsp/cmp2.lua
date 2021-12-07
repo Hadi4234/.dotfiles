@@ -4,15 +4,12 @@ local has_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
-
 local feedkey = function(key, mode)
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 end
 -- Setup nvim-cmp.
-
 local cmp = require('cmp')
 local lspkind = require('lspkind')
-
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -52,8 +49,7 @@ cmp.setup({
       end
     end, { "i", "s" }),
   },
-  
-   sources = {
+  sources = {
     { name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "vsnip" },
@@ -75,18 +71,18 @@ cmp.setup({
           return vim.tbl_keys(bufs)
         end,
       },
-    }
-  },  
---   sources_mapping = {
--- 	buffer = "[Buffer]",
--- 	nvim_lsp = "[LSP]",
--- 	nvim_lua = "[Lua]",
---   vsnip = "[VS]",
---   luasnip="[LS]",
--- 	cmp_tabnine = "[TN]",
--- 	path = "[Path]",
--- },
+    },
 
+
+    -- For vsnip user.
+
+    -- For luasnip user.
+    -- { name = 'luasnip' },
+
+    -- For ultisnips user.
+    -- { name = 'ultisnips' },
+
+  },
   formatting = {
     format = lspkind.cmp_format({
       {
@@ -105,7 +101,16 @@ cmp.setup({
         -- override preset symbols
         --
         -- default: {}
-     
+        source_mapping = {
+	buffer = "[Buffer]",
+	nvim_lsp = "[LSP]",
+	nvim_lua = "[Lua]",
+  vsnip = "[VS]",
+  luasnip="[LS]",
+	cmp_tabnine = "[TN]",
+	path = "[Path]",
+},
+
 
         symbol_map = {
           Text = "",
@@ -136,11 +141,12 @@ cmp.setup({
         },
     }})
     -- end of lspkind settings
-    },
+    }
   })
 
 
-local tabnine = require('cmp_tabnine.config')
+
+  local tabnine = require('cmp_tabnine.config')
 tabnine:setup({
 	max_lines = 1000;
 	max_num_results = 20;

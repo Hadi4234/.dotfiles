@@ -7,7 +7,7 @@
 
 ## Import files (Colors, Fonts, Etc)
 import:
-  - ~/.config/i3/alacritty/colors.yml
+  - ~/.config/i3/alacritty/themes/darcula.yml
   - ~/.config/i3/alacritty/fonts.yml
 
 ## Set environment variables
