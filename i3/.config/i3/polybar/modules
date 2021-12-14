@@ -846,7 +846,7 @@ ramp-foreground = ${color.YELLOW}
 [module/menu]
 type = custom/text
 
-content = " "
+content = " 漣"
 content-font = 3
 content-foreground = ${color.GREEN}
 content-padding = 0

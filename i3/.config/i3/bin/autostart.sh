@@ -26,7 +26,7 @@ ksuperkey -e 'Super_L=Alt_L|F1' &
 ksuperkey -e 'Super_R=Alt_L|F1' &
 
 # Restore wallpaper
-feh  --bg-fill ~/.config/i3/wallpapers/default.png
+feh  --bg-fill ~/wallpapers/nordic.jpg
 
 # Lauch notification daemon
 ~/.config/i3/bin/i3dunst.sh

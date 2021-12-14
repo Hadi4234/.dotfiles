@@ -8,7 +8,7 @@ local mappings = {
   w = {":w<cr>", "Save"},
   x = {":bdelete<cr>", "Close"},
   E = {":e ~/.config/nvim/init.lua<cr>", "Edit config"},
-  T = {":e ~/.config/nvim/lua/plugins/init.lua<cr>", "Edit config"},
+  T = {":e ~/.config/nvim/lua/lsp/cmp.lua<cr>", "Edit config"},
   f = {":Telescope find_files<cr>", "Telescope Find Files"},
   r = {":Telescope live_grep<cr>", "Telescope Live Grep"},
   l = {
@@ -29,9 +29,9 @@ local opts = {prefix = '<leader>'}
 -- local opts = {triggers = '<leader>'}
 wk.register(mappings, opts)
 
-require("which-key").setup {
-  -- your configuration comes here
-  -- or leave it empty to use the default settings
-  -- refer to the configuration section below
-  triggers = {"<leader>"}
-}
+-- require("which-key").setup {
+--   -- your configuration comes here
+--   -- or leave it empty to use the default settings
+--   -- refer to the configuration section below
+--   triggers = {"<leader>"}
+-- }

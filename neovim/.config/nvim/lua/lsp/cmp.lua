@@ -56,13 +56,13 @@ cmp.setup({
    sources = {
     { name = "nvim_lsp" },
     { name = "luasnip" },
-    { name = "vsnip" },
+    -- { name = "vsnip" },
     { name = "path" },
     { name = "nvim_lua" },
     { name = "cmdline"},
     { name = "emoji" },
     { name = "calc" },
-    { name = "cmp_tabnine" },
+    -- { name = "cmp_tabnine" },
     { name = "latex_symbols" },
     {
       name = "buffer",

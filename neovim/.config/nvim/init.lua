@@ -1,5 +1,76 @@
 
-require('plugins')
+require('packer').startup(function(use) 
+
+  -- My plugins here
+  -- Packer can manage itself
+  use 'wbthomason/packer.nvim'
+  use 'projekt0n/github-nvim-theme'
+
+  use 'rose-pine/neovim'
+  use {'nvim-treesitter/nvim-treesitter', run = ":TSUpdate"}
+  use {'hoob3rt/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
+  use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
+  use {'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons'}
+  use {'windwp/nvim-ts-autotag'}
+  use {'p00f/nvim-ts-rainbow'}
+  use {'windwp/nvim-autopairs'}
+  use {'folke/which-key.nvim'}
+  use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/plenary.nvim'}}}
+  use 'neovim/nvim-lspconfig'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-nvim-lua'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-vsnip'
+  use 'hrsh7th/vim-vsnip'
+  use { 'L3MON4D3/LuaSnip' }
+  use { 'saadparwaiz1/cmp_luasnip' }
+
+  use 'onsails/lspkind-nvim'
+  use 'norcalli/nvim-colorizer.lua'
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = {'nvim-lua/plenary.nvim'},
+    config = function()
+      require('gitsigns').setup {current_line_blame = true}
+    end
+    }
+    use {'ray-x/lsp_signature.nvim',
+         config= function ()
+            require "lsp_signature".setup()
+         end
+      }
+  use 'glepnir/dashboard-nvim'
+  use "lukas-reineke/indent-blankline.nvim"
+  use 'lukas-reineke/format.nvim'
+  use "akinsho/toggleterm.nvim"
+  use "terrortylor/nvim-comment"
+  use "rafamadriz/friendly-snippets"
+  use {
+    'neovim/nvim-lspconfig',
+    'williamboman/nvim-lsp-installer',
+    } 
+  use 'kdheepak/lazygit.nvim'
+
+  use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
+  use {
+  'sudormrfbin/cheatsheet.nvim',
+
+  requires = {
+    {'nvim-telescope/telescope.nvim'},
+    {'nvim-lua/popup.nvim'},
+    {'nvim-lua/plenary.nvim'},
+  }
+}
+  use 'mfussenegger/nvim-dap'
+
+
+
+  -- Automatically set up your configuration after cloning packer.nvim
+  -- Put this at the end after all plugins
+end)
+
 require('keybindings')
 require('options')
 require('nvim-tree-config')
@@ -16,80 +87,92 @@ require('format-config')
 require('toggleterm-config')
 require('comment-config')
 require('lsp')
-vim.cmd('colorscheme github_dark ')
+
+vim.o.nuw=3
+vim.o.relativenumber=true
+vim.o.numberwidth=2
+
+----theme config
+require("github-theme").setup({
+        theme_style = "dark",
+        transparent =false,
+        comment_style = "italic",
+        keyword_style = "italic",
+        function_style = "italic",
+        variable_style = "italic",
+        dark_sidebar = false,
+ })
+
+
 require("which-key").setup {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-      triggers = {"<leader>"}
-    }
+  -- your configuration comes here
+  -- or leave it empty to use the default settings
+  -- refer to the configuration section below
+  triggers = {"<leader>"}
+}
 
-require('telescope').setup{ 
-  defaults = { 
-  file_ignore_patterns = {"node_modules","pkg",".config"} 
-  }
-} 
--- following options are the default
--- e ach of these are documented in `:help nvim-tree.OPTION_NAME`
-require'nvim-tree'.setup = {
-      disable_netrw = true,
-      hijack_netrw = true,
-      open_on_setup = false,
-      ignore_ft_on_setup = {
-        "startify",
-        "dashboard",
-        "alpha",
-      },
-      update_to_buf_dir = {
-        enable = true,
-        auto_open = true,
-      },
-      auto_close = true,
-      open_on_tab = false,
-      hijack_cursor = false,
-      update_cwd = false,
-      diagnostics = {
-        enable = true,
-        icons = {
-          hint = "",
-          info = "",
-          warning = "",
-          error = "",
-        },
-      },
-      update_focused_file = {
-        enable = true,
-        update_cwd = true,
-        ignore_list = {},
-      },
-      system_open = {
-        cmd = nil,
-        args = {},
-      },
-      git = {
-        enable = true,
-        ignore = true,
-        timeout = 200,
-      },
-      view = {
-        width = 30,
-        height = 30,
-        side = "left",
-        auto_resize = true,
-        number = false,
-        relativenumber = false,
-        mappings = {
-          custom_only = false,
-          list = {},
-        },
-      },
-      filters = {
-        dotfiles = false,
-        custom = { ".git", "node_modules", ".cache" },
-      },
-  }
 
-require("luasnip/loaders/from_vscode").load({ paths = { "~/.local/share/nvim/site/pack/packer/start/friendly-snippets/snippets" }}) 
+require("cheatsheet").setup({
+    -- Whether to show bundled cheatsheets
+
+    -- For generic cheatsheets like default, unicode, nerd-fonts, etc
+    bundled_cheatsheets = true,
+    -- bundled_cheatsheets = {
+    --     enabled = {},
+    --     disabled = {},
+    -- },
+
+    -- For plugin specific cheatsheets
+    bundled_plugin_cheatsheets = true,
+    -- bundled_plugin_cheatsheets = {
+    --     enabled = {},
+    --     disabled = {},
+    -- }
+
+    -- For bundled plugin cheatsheets, do not show a sheet if you
+    -- don't have the plugin installed (searches runtimepath for
+    -- same directory name)
+    include_only_installed_plugins = true,
+})
+
+local dap = require('dap')
+dap.adapters.lldb = {
+  type = 'executable',
+  command = '/usr/bin/lldb-vscode', -- adjust as needed
+  name = "lldb"
+}
+local dap = require('dap')
+dap.configurations.cpp = {
+  {
+    name = "Launch",
+    type = "lldb",
+    request = "launch",
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    cwd = '${workspaceFolder}',
+    stopOnEntry = false,
+    args = {},
+
+    -- if you change `runInTerminal` to true, you might need to change the yama/ptrace_scope setting:
+    --
+    --    echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+    --
+    -- Otherwise you might get the following error:
+    --
+    --    Error on launch: Failed to attach to the target process
+    --
+    -- But you should be aware of the implications:
+    -- https://www.kernel.org/doc/html/latest/admin-guide/LSM/Yama.html
+    runInTerminal = false,
+  },
+}
+
+
+-- If you want to use this for rust and c, add something like this:
+
+dap.configurations.c = dap.configurations.cpp
+dap.configurations.rust = dap.configurations.cpp
 
 
 

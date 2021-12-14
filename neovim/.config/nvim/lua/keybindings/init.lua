@@ -1,4 +1,4 @@
-vim.g.mapleader = ' '
+vim.g.mapleader =' '
 -- local map = vim.api.nvim_set_keymap
 -- map('n', '<C-h>', '<C-w>h', {noremap = true, silent = false})
 -- map('n', '<C-l>', '<C-w>l', {noremap = true, silent = false})
@@ -39,22 +39,25 @@ function tmap(shortcut, command)
 end
 
 -- sane regexes
-nmap('/', '/\\v')
-vmap('/', '/\\v')
+-- nmap('/', '/\\v')
+-- vmap('/', '/\\v')
 
 -- don't jump when using *
-nmap('*', '*<c-o>')
+-- nmap('*', '*<c-o>')
 
 -- keep search matches in the middle of the window
 nmap('n', 'nzzzv')
 nmap('N', 'Nzzzv')
-
+ 
+--folding
+nmap('<Leader>m', '<zM>')
+nmap('<Leader>r', '<zR>')
 -- Same when jumping around
 nmap('g;', 'g;zz')
 --nmap('g', 'g,zz') -- for some reason doesn't work well
 
 -- Open a Quickfix window for the last search.
-nmap("<leader>?", ":execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>")
+-- nmap("<leader>?", ":execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>")
 
 -- Begining & End of line in Normal mode
 nmap('H', '^')

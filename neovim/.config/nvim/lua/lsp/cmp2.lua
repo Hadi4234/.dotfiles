@@ -49,6 +49,8 @@ cmp.setup({
       end
     end, { "i", "s" }),
   },
+
+
   sources = {
     { name = "nvim_lsp" },
     { name = "luasnip" },
@@ -158,6 +160,5 @@ tabnine:setup({
 		-- lua = true
 	};
 })
-
 
 
