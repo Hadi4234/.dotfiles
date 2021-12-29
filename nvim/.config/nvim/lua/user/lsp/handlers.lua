@@ -21,9 +21,9 @@ M.setup = function()
   severity_sort = false,
     -- disable virtual text
       -- show signs
-    signs = {
-      active = signs,
-    },
+    -- signs = {
+    --   active = signs,
+    -- },
     float = {
       focusable = false,
       style = "minimal",

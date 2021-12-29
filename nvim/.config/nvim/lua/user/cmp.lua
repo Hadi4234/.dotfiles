@@ -8,6 +8,23 @@ if not snip_status_ok then
   return
 end
 
+luasnip.filetype_extend('jinja', { 'html', 'htmldjango' })
+luasnip.filetype_extend('jinja2', { 'html', 'htmldjango' })
+luasnip.filetype_extend('html.twig', { 'html', 'htmldjango' })
+
+luasnip.filetype_extend('typescript', { 'javascript' })
+luasnip.filetype_extend('javascriptreact', { 'javascript' })
+luasnip.filetype_extend('javascript.jsx', { 'javascriptreact', 'javascript' })
+luasnip.filetype_extend(
+  'typescriptreact',
+  { 'javascriptreact', 'typescript', 'javascript' }
+)
+luasnip.filetype_extend(
+  'typescript.tsx',
+  { 'javascriptreact', 'typescript', 'javascript' }
+)
+
+
 require("luasnip/loaders/from_vscode").lazy_load()
 
 local check_backspace = function()
@@ -110,6 +127,7 @@ cmp.setup {
     end,
   },
   sources = {
+    { name = 'npm', keyword_length = 4 },
     { name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "buffer" },
