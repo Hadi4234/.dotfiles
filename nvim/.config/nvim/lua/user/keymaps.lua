@@ -25,6 +25,10 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
+--formatting
+keymap("n", "<C-s>", ":lua vim.lsp.buf.formatting_sync()<CR>", opts)
+keymap("i", "<C-s>", "<cmd>lua vim.lsp.buf.formatting_sync()<CR>", opts)
+
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
 keymap("n", "<C-Down>", ":resize +2<CR>", opts)
